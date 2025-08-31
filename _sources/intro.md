@@ -1,11 +1,13 @@
-# Welcome to your Jupyter Book
+# Welcome to Nuril Anjar Jupyter Book
+Ini adalah Jupyter Book Anjar yang terdapat tentang materi Proyek Sain Data pada Semester 5
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Mata kuliah “Proyek Sains Data” adalah program studi Sains Data yang menggabungkan berbagai keahlian yang telah dipelajari, seperti matematika, statistika, pemrograman, dan teknik analisis data, untuk memecahkan masalah bisnis atau ilmiah dengan menggunakan dataset riil.
+Semoga materi ini dapat bermanfaat bagi para pembaca
 
-Check out the content pages bundled with this sample book to see more.
+NAMA    : Nuril Anjar Royani
 
-```{tableofcontents}
-```
+NIM     : 230411100134
+
+PRODI   : TEKNIK INFORMATIKA
+
+EMAIL   : nurilanjarcans5@gmail.com
