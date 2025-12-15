@@ -482,16 +482,10 @@ document.write(`
 <h1>Business Understanding<a class="headerlink" href="#business-understanding" title="Link to this heading">#</a></h1>
 <section id="pendahuluan">
 <h2>Pendahuluan<a class="headerlink" href="#pendahuluan" title="Link to this heading">#</a></h2>
-<p>Pada industri kimia, farmasi, dan minuman beralkohol, proses quality control (QC) terhadap kadar etanol merupakan tahap penting untuk memastikan bahwa produk memenuhi standar keamanan dan regulasi. Pemeriksaan kadar etanol biasanya dilakukan melalui metode laboratorium yang memerlukan waktu, biaya, serta peralatan khusus. Proses tersebut tidak selalu efisien ketika perusahaan membutuhkan pemeriksaan cepat dalam jumlah besar.</p>
-<p>Dataset EthanolConcentration menyediakan data multivariate time series hasil pengukuran spektroskopi yang merepresentasikan variasi sinyal pada beberapa channel untuk beberapa tingkatan konsentrasi etanol. Dengan memanfaatkan teknik machine learning untuk mengklasifikasikan konsentrasi etanol berdasarkan pola sinyal tersebut, perusahaan dapat:</p>
-<ul class="simple">
-<li><p>Melakukan deteksi kadar etanol secara otomatis dan real-time.</p></li>
-<li><p>Mengurangi biaya pemeriksaan laboratorium.</p></li>
-<li><p>Meminimalkan human error dalam proses identifikasi.</p></li>
-<li><p>Meningkatkan efisiensi QC pada lini produksi.</p></li>
-</ul>
-<p>Oleh karena itu, proyek ini bertujuan membangun model klasifikasi berbasis machine learning yang dapat memprediksi tingkat konsentrasi etanol dari data time series, sekaligus membuktikan apakah metode komputasi dapat menjadi alternatif pendukung dalam proses inspeksi industri.</p>
-<p>Spektrometer menangkap bagaimana sampel menyerap, memantulkan, atau menransmisikan cahaya pada berbagai panjang gelombang.</p>
+<p>Dataset EthanolConcentration merupakan salah satu dataset multivariate time series yang tersedia dalam UCR/UEA Time Series Classification Repository dan banyak digunakan sebagai benchmark pada penelitian klasifikasi time series. Dataset ini berasal dari pengukuran spektroskopi terhadap sampel whisky dengan beberapa tingkat konsentrasi etanol. Spektrometer merekam bagaimana sampel menyerap, memantulkan, atau mentransmisikan cahaya pada berbagai panjang gelombang, sehingga setiap sampel direpresentasikan dalam bentuk kurva spektrum. Data ini memiliki karakteristik numerik kontinu dan mencerminkan variasi sinyal kimia yang sangat halus antar tingkat konsentrasi etanol, sehingga relevan untuk studi klasifikasi berbasis sinyal.</p>
+<p>Secara struktur, dataset EthanolConcentration dibagi menjadi dua bagian, yaitu data training sebanyak 261 sampel dan data testing sebanyak 263 sampel, sehingga total terdapat 524 sampel. Setiap sampel berupa time series multivariat dengan panjang tetap 1751 timestep dan memiliki 3 channel (dimensi). Dengan demikian, satu sampel memiliki ukuran data 1751 × 3 yang merepresentasikan intensitas sinyal spektroskopi pada tiga channel berbeda. Dataset ini dikategorikan sebagai tipe SPECTRO, yang menandakan bahwa data berasal dari sinyal spektroskopi dan bukan dari sensor waktu konvensional seperti accelerometer atau ECG.</p>
+<p>Dataset ini memiliki empat kelas target yang merepresentasikan tingkat konsentrasi etanol, yaitu 35%, 38%, 40%, dan 45%. Konsentrasi 40% memiliki makna penting karena merupakan batas minimum kadar alkohol yang diperbolehkan untuk produk Scotch Whisky, sehingga klasifikasi yang akurat pada dataset ini memiliki relevansi langsung terhadap standar dan regulasi industri minuman beralkohol. Perbedaan antar kelas pada data spektrum cenderung sangat tipis dan tidak mudah dibedakan secara visual, sehingga model harus mampu menangkap pola perbedaan yang sangat halus pada sinyal.</p>
+<p>Dari sisi penerapan, dataset EthanolConcentration sangat relevan untuk quality control (QC) industri, khususnya dalam industri kimia, farmasi, dan minuman beralkohol. Dengan memanfaatkan teknik machine learning untuk mengklasifikasikan kadar etanol berdasarkan pola time series spektroskopi, proses inspeksi dapat dilakukan secara otomatis, lebih cepat, dan lebih efisien dibandingkan metode laboratorium konvensional. Selain itu, pendekatan ini berpotensi mengurangi biaya operasional, meminimalkan human error, serta mendukung sistem inspeksi real-time, sehingga menjadikan metode komputasi sebagai alternatif pendukung yang kuat dalam proses pengendalian mutu industri modern.</p>
 <p><a class="reference external" href="https://www.timeseriesclassification.com/description.php?Dataset=EthanolConcentration">https://www.timeseriesclassification.com/description.php?Dataset=EthanolConcentration</a></p>
 <p>berikut tabel informasi dataset:</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -610,8 +604,12 @@ Requirement already satisfied: numpy&gt;=1.24.3 in /usr/local/python/3.12.1/lib/
 Requirement already satisfied: scipy&gt;=1.10.1 in /home/codespace/.local/lib/python3.12/site-packages (from tslearn) (1.16.0)
 Requirement already satisfied: numba&gt;=0.58.1 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from tslearn) (0.61.2)
 Requirement already satisfied: joblib&gt;=1.2 in /home/codespace/.local/lib/python3.12/site-packages (from tslearn) (1.5.1)
-Requirement already satisfied: llvmlite&lt;0.45,&gt;=0.44.0dev0 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from numba&gt;=0.58.1-&gt;tslearn) (0.44.0)
-Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /home/codespace/.local/lib/python3.12/site-packages (from scikit-learn&gt;=1.4-&gt;tslearn) (3.6.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: llvmlite&lt;0.45,&gt;=0.44.0dev0 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from numba&gt;=0.58.1-&gt;tslearn) (0.44.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /home/codespace/.local/lib/python3.12/site-packages (from scikit-learn&gt;=1.4-&gt;tslearn) (3.6.0)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">25.1.1</span> -&gt; <span class=" -Color -Color-Green">25.3</span>
@@ -647,60 +645,10 @@ Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /home/codespace/.local
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">16</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># ---------------------------------------------------</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># 2. Load Dataset</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="c1"># ---------------------------------------------------</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">dataset</span> <span class="o">=</span> <span class="n">UCR_UEA_datasets</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">16</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;EthanolConcentration&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape X_train :&quot;</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape X_test  :&quot;</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/tslearn/datasets/ucr_uea.py:300,</span> in <span class="ni">UCR_UEA_datasets.load_dataset</span><span class="nt">(self, dataset_name)</span>
-<span class="g g-Whitespace">    </span><span class="mi">296</span>     <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">_load_txt_uea</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">297</span>         <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">full_path</span><span class="p">,</span> <span class="n">dataset_name</span> <span class="o">+</span> <span class="s2">&quot;_TEST.txt&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">298</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">299</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_has_files</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;arff&quot;</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">300</span>     <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">_load_arff_uea</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">301</span>         <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">full_path</span><span class="p">,</span> <span class="n">dataset_name</span> <span class="o">+</span> <span class="s2">&quot;_TRAIN.arff&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">302</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">303</span>     <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">_load_arff_uea</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">304</span>         <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">full_path</span><span class="p">,</span> <span class="n">dataset_name</span> <span class="o">+</span> <span class="s2">&quot;_TEST.arff&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">305</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">306</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/tslearn/utils/utils.py:621,</span> in <span class="ni">_load_arff_uea</span><span class="nt">(dataset_path)</span>
-<span class="g g-Whitespace">    </span><span class="mi">616</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">HAS_ARFF</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">617</span>     <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">618</span>         <span class="s2">&quot;scipy 1.3.0 or newer is required to load &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">619</span>         <span class="s2">&quot;time series datasets from arff format.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">620</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">621</span> <span class="n">data</span><span class="p">,</span> <span class="n">meta</span> <span class="o">=</span> <span class="n">arff</span><span class="o">.</span><span class="n">loadarff</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="n">names</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">names</span><span class="p">()</span>  <span class="c1"># [&quot;input&quot;, &quot;class&quot;] for multi-variate</span>
-<span class="g g-Whitespace">    </span><span class="mi">624</span> <span class="c1"># firstly get y_train</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/scipy/io/arff/_arffread.py:804,</span> in <span class="ni">loadarff</span><span class="nt">(f)</span>
-<span class="g g-Whitespace">    </span><span class="mi">802</span>     <span class="n">ofile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">803</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">804</span>     <span class="k">return</span> <span class="n">_loadarff</span><span class="p">(</span><span class="n">ofile</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">805</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">806</span>     <span class="k">if</span> <span class="n">ofile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">f</span><span class="p">:</span>  <span class="c1"># only close what we opened</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/scipy/io/arff/_arffread.py:869,</span> in <span class="ni">_loadarff</span><span class="nt">(ofile)</span>
-<span class="g g-Whitespace">    </span><span class="mi">865</span>         <span class="n">row</span><span class="p">,</span> <span class="n">dialect</span> <span class="o">=</span> <span class="n">split_data_line</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">dialect</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">867</span>         <span class="k">yield</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">attr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">parse_data</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">elems</span><span class="p">])</span>
-<span class="ne">--&gt; </span><span class="mi">869</span> <span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">generator</span><span class="p">(</span><span class="n">ofile</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">870</span> <span class="c1"># No error should happen here: it is a bug otherwise</span>
-<span class="g g-Whitespace">    </span><span class="mi">871</span> <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">[(</span><span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">attr</span><span class="p">])</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/scipy/io/arff/_arffread.py:867,</span> in <span class="ni">_loadarff.&lt;locals&gt;.generator</span><span class="nt">(row_iter, delim)</span>
-<span class="g g-Whitespace">    </span><span class="mi">863</span>     <span class="k">continue</span>
-<span class="g g-Whitespace">    </span><span class="mi">865</span> <span class="n">row</span><span class="p">,</span> <span class="n">dialect</span> <span class="o">=</span> <span class="n">split_data_line</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">dialect</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">867</span> <span class="k">yield</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">attr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">parse_data</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">elems</span><span class="p">])</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape X_train : (261, 1751, 3)
+Shape X_test  : (263, 1751, 3)
+Jumlah kelas  : 4
+Kelas unik    : [&#39;E35&#39; &#39;E38&#39; &#39;E40&#39; &#39;E45&#39;]
 </pre></div>
 </div>
 </div>
@@ -841,7 +789,7 @@ Distribusi kelas pada data train: Counter({np.str_(&#39;E40&#39;): 66, np.str_(&
 Distribusi label test : Counter({np.str_(&#39;E35&#39;): 66, np.str_(&#39;E38&#39;): 66, np.str_(&#39;E40&#39;): 66, np.str_(&#39;E45&#39;): 65})
 </pre></div>
 </div>
-<img alt="_images/41ae4f55d6eeb00b5643c62c7f544f67b201617f17f731ce29dd49c1d8870f3b.png" src="_images/41ae4f55d6eeb00b5643c62c7f544f67b201617f17f731ce29dd49c1d8870f3b.png" />
+<img alt="_images/faa61f877034a53eb8a03ef378143ae494a1ffd2be3b34c948609f7e70691a67.png" src="_images/faa61f877034a53eb8a03ef378143ae494a1ffd2be3b34c948609f7e70691a67.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -872,7 +820,7 @@ Distribusi label test : Counter({np.str_(&#39;E35&#39;): 66, np.str_(&#39;E38&#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2c428132aaeeb075435a16fbcc61e47e26dd27f449f43243ac88fb30e2da0b09.png" src="_images/2c428132aaeeb075435a16fbcc61e47e26dd27f449f43243ac88fb30e2da0b09.png" />
+<img alt="_images/5072aa9b9dd5b3e82a8ee24f676d8843841f7f06332cd28311e409e6fc870ff9.png" src="_images/5072aa9b9dd5b3e82a8ee24f676d8843841f7f06332cd28311e409e6fc870ff9.png" />
 </div>
 </div>
 </section>
@@ -942,10 +890,10 @@ Shape test setelah scaling: (263, 1751, 3)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Label unik sebelum encoding : [0 1 2 3]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Label unik sebelum encoding : [&#39;E35&#39; &#39;E38&#39; &#39;E40&#39; &#39;E45&#39;]
 Label unik sesudah encoding : [0 1 2 3]
 
-10 label asli     : [0 0 0 0 0 0 0 0 0 0]
+10 label asli     : [&#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39;]
 10 label encoded  : [0 0 0 0 0 0 0 0 0 0]
 </pre></div>
 </div>
@@ -1102,7 +1050,7 @@ Sample index yang outlier   : [ 0  1  3  4  7 12 13 15 31 33] (contoh 10 pertama
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape setelah flatten : (261, 5253) (263, 5253)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape setelah flatten : (261, 5253) (460513, 3)
 </pre></div>
 </div>
 </div>
@@ -1118,14 +1066,18 @@ Sample index yang outlier   : [ 0  1  3  4  7 12 13 15 31 33] (contoh 10 pertama
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: tslearn in /usr/local/lib/python3.12/dist-packages (0.7.0)
-Requirement already satisfied: scikit-learn&gt;=1.4 in /usr/local/lib/python3.12/dist-packages (from tslearn) (1.6.1)
-Requirement already satisfied: numpy&gt;=1.24.3 in /usr/local/lib/python3.12/dist-packages (from tslearn) (2.0.2)
-Requirement already satisfied: scipy&gt;=1.10.1 in /usr/local/lib/python3.12/dist-packages (from tslearn) (1.16.3)
-Requirement already satisfied: numba&gt;=0.58.1 in /usr/local/lib/python3.12/dist-packages (from tslearn) (0.60.0)
-Requirement already satisfied: joblib&gt;=1.2 in /usr/local/lib/python3.12/dist-packages (from tslearn) (1.5.2)
-Requirement already satisfied: llvmlite&lt;0.44,&gt;=0.43.0dev0 in /usr/local/lib/python3.12/dist-packages (from numba&gt;=0.58.1-&gt;tslearn) (0.43.0)
-Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /usr/local/lib/python3.12/dist-packages (from scikit-learn&gt;=1.4-&gt;tslearn) (3.6.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: tslearn in /usr/local/python/3.12.1/lib/python3.12/site-packages (0.7.0)
+Requirement already satisfied: scikit-learn&gt;=1.4 in /home/codespace/.local/lib/python3.12/site-packages (from tslearn) (1.7.0)
+Requirement already satisfied: numpy&gt;=1.24.3 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from tslearn) (2.2.6)
+Requirement already satisfied: scipy&gt;=1.10.1 in /home/codespace/.local/lib/python3.12/site-packages (from tslearn) (1.16.0)
+Requirement already satisfied: numba&gt;=0.58.1 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from tslearn) (0.61.2)
+Requirement already satisfied: joblib&gt;=1.2 in /home/codespace/.local/lib/python3.12/site-packages (from tslearn) (1.5.1)
+Requirement already satisfied: llvmlite&lt;0.45,&gt;=0.44.0dev0 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from numba&gt;=0.58.1-&gt;tslearn) (0.44.0)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /home/codespace/.local/lib/python3.12/site-packages (from scikit-learn&gt;=1.4-&gt;tslearn) (3.6.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">25.1.1</span> -&gt; <span class=" -Color -Color-Green">25.3</span>
+<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> To update, run: <span class=" -Color -Color-Green">python3 -m pip install --upgrade pip</span>
 </pre></div>
 </div>
 </div>
@@ -1224,12 +1176,16 @@ Shape flattened X_test : (263, 5253)
 === TRAINING MODEL ===
 
 Training Random Forest ...
-Akurasi : 0.4449
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi : 0.4449
 Prediksi 5 data pertama : [&#39;E38&#39; &#39;E35&#39; &#39;E40&#39; &#39;E35&#39; &#39;E35&#39;]
 Label sebenarnya        : [&#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39;]
 
 Training SVM (RBF) ...
-Akurasi : 0.3308
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi : 0.3308
 Prediksi 5 data pertama : [&#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E38&#39;]
 Label sebenarnya        : [&#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39;]
 
@@ -1239,7 +1195,13 @@ Prediksi 5 data pertama : [&#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E38&#3
 Label sebenarnya        : [&#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39;]
 
 Training Logistic Regression ...
-Akurasi : 0.6198
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1288: FutureWarning: Using the &#39;liblinear&#39; solver for multiclass classification is deprecated. An error will be raised in 1.8. Either use another solver which supports the multinomial loss or wrap the estimator in a OneVsRestClassifier to keep applying a one-versus-rest scheme.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi : 0.6198
 Prediksi 5 data pertama : [&#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E38&#39;]
 Label sebenarnya        : [&#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#39;]
 
@@ -1300,6 +1262,12 @@ Label sebenarnya        : [&#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#3
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1288: FutureWarning: Using the &#39;liblinear&#39; solver for multiclass classification is deprecated. An error will be raised in 1.8. Either use another solver which supports the multinomial loss or wrap the estimator in a OneVsRestClassifier to keep applying a one-versus-rest scheme.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1319,11 +1287,11 @@ Label sebenarnya        : [&#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/sklearn/linear_model/_logistic.py:1247: FutureWarning: &#39;multi_class&#39; was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use &#39;multinomial&#39;. Leave it to its default value to avoid this warning.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: &#39;multi_class&#39; was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use &#39;multinomial&#39;. Leave it to its default value to avoid this warning.
   warnings.warn(
 </pre></div>
 </div>
-<div class="output text_html"><style>#sk-container-id-2 {
+<div class="output text_html"><style>#sk-container-id-1 {
   /* Definition of color scheme common for light and dark mode */
   --sklearn-color-text: #000;
   --sklearn-color-text-muted: #666;
@@ -1354,15 +1322,15 @@ Label sebenarnya        : [&#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#3
   }
 }
 
-#sk-container-id-2 {
+#sk-container-id-1 {
   color: var(--sklearn-color-text);
 }
 
-#sk-container-id-2 pre {
+#sk-container-id-1 pre {
   padding: 0;
 }
 
-#sk-container-id-2 input.sk-hidden--visually {
+#sk-container-id-1 input.sk-hidden--visually {
   border: 0;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
@@ -1374,7 +1342,7 @@ Label sebenarnya        : [&#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#3
   width: 1px;
 }
 
-#sk-container-id-2 div.sk-dashed-wrapped {
+#sk-container-id-1 div.sk-dashed-wrapped {
   border: 1px dashed var(--sklearn-color-line);
   margin: 0 0.4em 0.5em 0.4em;
   box-sizing: border-box;
@@ -1382,7 +1350,7 @@ Label sebenarnya        : [&#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#3
   background-color: var(--sklearn-color-background);
 }
 
-#sk-container-id-2 div.sk-container {
+#sk-container-id-1 div.sk-container {
   /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
      but bootstrap.min.css set `[hidden] { display: none !important; }`
      so we also need the `!important` here to be able to override the
@@ -1392,7 +1360,7 @@ Label sebenarnya        : [&#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#3
   position: relative;
 }
 
-#sk-container-id-2 div.sk-text-repr-fallback {
+#sk-container-id-1 div.sk-text-repr-fallback {
   display: none;
 }
 
@@ -1408,14 +1376,14 @@ div.sk-item {
 
 /* Parallel-specific style estimator block */
 
-#sk-container-id-2 div.sk-parallel-item::after {
+#sk-container-id-1 div.sk-parallel-item::after {
   content: "";
   width: 100%;
   border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
   flex-grow: 1;
 }
 
-#sk-container-id-2 div.sk-parallel {
+#sk-container-id-1 div.sk-parallel {
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -1423,28 +1391,28 @@ div.sk-item {
   position: relative;
 }
 
-#sk-container-id-2 div.sk-parallel-item {
+#sk-container-id-1 div.sk-parallel-item {
   display: flex;
   flex-direction: column;
 }
 
-#sk-container-id-2 div.sk-parallel-item:first-child::after {
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
   align-self: flex-end;
   width: 50%;
 }
 
-#sk-container-id-2 div.sk-parallel-item:last-child::after {
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
   align-self: flex-start;
   width: 50%;
 }
 
-#sk-container-id-2 div.sk-parallel-item:only-child::after {
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
   width: 0;
 }
 
 /* Serial-specific style estimator block */
 
-#sk-container-id-2 div.sk-serial {
+#sk-container-id-1 div.sk-serial {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1462,14 +1430,14 @@ clickable and can be expanded/collapsed.
 
 /* Pipeline and ColumnTransformer style (default) */
 
-#sk-container-id-2 div.sk-toggleable {
+#sk-container-id-1 div.sk-toggleable {
   /* Default theme specific background. It is overwritten whether we have a
   specific estimator or a Pipeline/ColumnTransformer */
   background-color: var(--sklearn-color-background);
 }
 
 /* Toggleable label */
-#sk-container-id-2 label.sk-toggleable__label {
+#sk-container-id-1 label.sk-toggleable__label {
   cursor: pointer;
   display: flex;
   width: 100%;
@@ -1482,13 +1450,13 @@ clickable and can be expanded/collapsed.
   gap: 0.5em;
 }
 
-#sk-container-id-2 label.sk-toggleable__label .caption {
+#sk-container-id-1 label.sk-toggleable__label .caption {
   font-size: 0.6rem;
   font-weight: lighter;
   color: var(--sklearn-color-text-muted);
 }
 
-#sk-container-id-2 label.sk-toggleable__label-arrow:before {
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
   content: "▸";
   float: left;
@@ -1496,27 +1464,25 @@ clickable and can be expanded/collapsed.
   color: var(--sklearn-color-icon);
 }
 
-#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
   color: var(--sklearn-color-text);
 }
 
 /* Toggleable content - dropdown */
 
-#sk-container-id-2 div.sk-toggleable__content {
-  max-height: 0;
-  max-width: 0;
-  overflow: hidden;
+#sk-container-id-1 div.sk-toggleable__content {
+  display: none;
   text-align: left;
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-2 div.sk-toggleable__content.fitted {
+#sk-container-id-1 div.sk-toggleable__content.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-2 div.sk-toggleable__content pre {
+#sk-container-id-1 div.sk-toggleable__content pre {
   margin: 0.2em;
   border-radius: 0.25em;
   color: var(--sklearn-color-text);
@@ -1524,79 +1490,79 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-2 div.sk-toggleable__content.fitted pre {
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
   /* unfitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
   /* Expand drop-down */
-  max-height: 200px;
-  max-width: 100%;
-  overflow: auto;
+  display: block;
+  width: 100%;
+  overflow: visible;
 }
 
-#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
   content: "▾";
 }
 
 /* Pipeline/ColumnTransformer-specific style */
 
-#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-2 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator-specific style */
 
 /* Colorize estimator box */
-#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-2 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
-#sk-container-id-2 div.sk-label label.sk-toggleable__label,
-#sk-container-id-2 div.sk-label label {
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
   /* The background is the default theme color */
   color: var(--sklearn-color-text-on-default-background);
 }
 
 /* On hover, darken the color of the background */
-#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
 /* Label box, darken color on hover, fitted */
-#sk-container-id-2 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator label */
 
-#sk-container-id-2 div.sk-label label {
+#sk-container-id-1 div.sk-label label {
   font-family: monospace;
   font-weight: bold;
   display: inline-block;
   line-height: 1.2em;
 }
 
-#sk-container-id-2 div.sk-label-container {
+#sk-container-id-1 div.sk-label-container {
   text-align: center;
 }
 
 /* Estimator-specific */
-#sk-container-id-2 div.sk-estimator {
+#sk-container-id-1 div.sk-estimator {
   font-family: monospace;
   border: 1px dotted var(--sklearn-color-border-box);
   border-radius: 0.25em;
@@ -1606,18 +1572,18 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-2 div.sk-estimator.fitted {
+#sk-container-id-1 div.sk-estimator.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
 /* on hover */
-#sk-container-id-2 div.sk-estimator:hover {
+#sk-container-id-1 div.sk-estimator:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-2 div.sk-estimator.fitted:hover {
+#sk-container-id-1 div.sk-estimator.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
@@ -1705,7 +1671,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 
 /* "?"-specific style due to the `<a>` HTML tag */
 
-#sk-container-id-2 a.estimator_doc_link {
+#sk-container-id-1 a.estimator_doc_link {
   float: right;
   font-size: 1rem;
   line-height: 1em;
@@ -1720,25 +1686,291 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   border: var(--sklearn-color-unfitted-level-1) 1pt solid;
 }
 
-#sk-container-id-2 a.estimator_doc_link.fitted {
+#sk-container-id-1 a.estimator_doc_link.fitted {
   /* fitted */
   border: var(--sklearn-color-fitted-level-1) 1pt solid;
   color: var(--sklearn-color-fitted-level-1);
 }
 
 /* On hover */
-#sk-container-id-2 a.estimator_doc_link:hover {
+#sk-container-id-1 a.estimator_doc_link:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-3);
   color: var(--sklearn-color-background);
   text-decoration: none;
 }
 
-#sk-container-id-2 a.estimator_doc_link.fitted:hover {
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
-</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression(max_iter=2000, multi_class=&#x27;multinomial&#x27;, random_state=42)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>LogisticRegression</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>LogisticRegression(max_iter=2000, multi_class=&#x27;multinomial&#x27;, random_state=42)</pre></div> </div></div></div></div></div></div>
+
+.estimator-table summary {
+    padding: .5rem;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.estimator-table details[open] {
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    padding-bottom: 0.3rem;
+}
+
+.estimator-table .parameters-table {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.estimator-table .parameters-table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.estimator-table .parameters-table tr:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+.estimator-table .parameters-table tr:hover {
+    background-color: #e0e0e0;
+}
+
+.estimator-table table td {
+    border: 1px solid rgba(106, 105, 104, 0.232);
+}
+
+.user-set td {
+    color:rgb(255, 94, 0);
+    text-align: left;
+}
+
+.user-set td.value pre {
+    color:rgb(255, 94, 0) !important;
+    background-color: transparent !important;
+}
+
+.default td {
+    color: black;
+    text-align: left;
+}
+
+.user-set td i,
+.default td i {
+    color: black;
+}
+
+.copy-paste-icon {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNy4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIwOCAwTDMzMi4xIDBjMTIuNyAwIDI0LjkgNS4xIDMzLjkgMTQuMWw2Ny45IDY3LjljOSA5IDE0LjEgMjEuMiAxNC4xIDMzLjlMNDQ4IDMzNmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtMTkyIDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtMjg4YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4ek00OCAxMjhsODAgMCAwIDY0LTY0IDAgMCAyNTYgMTkyIDAgMC0zMiA2NCAwIDAgNDhjMCAyNi41LTIxLjUgNDgtNDggNDhMNDggNTEyYy0yNi41IDAtNDgtMjEuNS00OC00OEwwIDE3NmMwLTI2LjUgMjEuNS00OCA0OC00OHoiLz48L3N2Zz4=);
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: 0;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+</style><body><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression(max_iter=2000, multi_class=&#x27;multinomial&#x27;, random_state=42)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>LogisticRegression</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('penalty',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">penalty&nbsp;</td>
+            <td class="value">&#x27;l2&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('dual',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">dual&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('tol',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">tol&nbsp;</td>
+            <td class="value">0.0001</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('C',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">C&nbsp;</td>
+            <td class="value">1.0</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('fit_intercept',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">fit_intercept&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('intercept_scaling',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">intercept_scaling&nbsp;</td>
+            <td class="value">1</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('class_weight',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">class_weight&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('random_state',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">random_state&nbsp;</td>
+            <td class="value">42</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('solver',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">solver&nbsp;</td>
+            <td class="value">&#x27;lbfgs&#x27;</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('max_iter',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">max_iter&nbsp;</td>
+            <td class="value">2000</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('multi_class',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">multi_class&nbsp;</td>
+            <td class="value">&#x27;multinomial&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('verbose',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">verbose&nbsp;</td>
+            <td class="value">0</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('warm_start',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">warm_start&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('n_jobs',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">n_jobs&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('l1_ratio',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">l1_ratio&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div></div></div><script>function copyToClipboard(text, element) {
+    // Get the parameter prefix from the closest toggleable content
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const fullParamName = paramPrefix ? `${paramPrefix}${text}` : text;
+
+    const originalStyle = element.style;
+    const computedStyle = window.getComputedStyle(element);
+    const originalWidth = computedStyle.width;
+    const originalHTML = element.innerHTML.replace('Copied!', '');
+
+    navigator.clipboard.writeText(fullParamName)
+        .then(() => {
+            element.style.width = originalWidth;
+            element.style.color = 'green';
+            element.innerHTML = "Copied!";
+
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        })
+        .catch(err => {
+            console.error('Failed to copy:', err);
+            element.style.color = 'red';
+            element.innerHTML = "Failed!";
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        });
+    return false;
+}
+
+document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const paramName = element.parentElement.nextElementSibling.textContent.trim();
+    const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
+
+    element.setAttribute('title', fullParamName);
+});
+</script></body></div></div>
 </div>
 </section>
 </section>
@@ -1800,7 +2032,7 @@ Label sebenarnya        : [&#39;E35&#39; &#39;E35&#39; &#39;E35&#39; &#39;E35&#3
 weighted avg       0.61      0.62      0.61       263
 </pre></div>
 </div>
-<img alt="_images/45e9b99e422677fd2c36b0e266e9d7ba32631cce46135480b867108483ecf5ac.png" src="_images/45e9b99e422677fd2c36b0e266e9d7ba32631cce46135480b867108483ecf5ac.png" />
+<img alt="_images/21c748a3e5c89d818101a42ee0ee66dc249a004460989a5ddd07cc7135617e73.png" src="_images/21c748a3e5c89d818101a42ee0ee66dc249a004460989a5ddd07cc7135617e73.png" />
 </div>
 </div>
 </section>
@@ -1877,6 +2109,22 @@ weighted avg       0.61      0.62      0.61       263
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model Logistic Regression berhasil disimpan -&gt;&quot;</span><span class="p">,</span> <span class="n">model_path</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scaler berhasil disimpan -&gt;&quot;</span><span class="p">,</span> <span class="n">scaler_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">13</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># ------------------------------</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># 1. Setup folder</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># ------------------------------</span>
+<span class="ne">---&gt; </span><span class="mi">13</span> <span class="n">BASE_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">MODEL_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;models&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">MODEL_DIR</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;__file__&#39; is not defined
 </pre></div>
 </div>
 </div>
